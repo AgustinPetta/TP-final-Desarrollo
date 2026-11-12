@@ -42,6 +42,7 @@ public class Main {
 
 public static Ciudad crearCiudad(){
     /* COMPLETAR */
+    
 }
 
 public static Explorador[] crearExploradores()

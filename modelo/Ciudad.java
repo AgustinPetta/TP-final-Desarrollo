@@ -184,5 +184,7 @@ public class Ciudad {
         //Retorna una ciudad que es una copia de la ciudad actual.
     }
 
-    public void informeGeneral(){}
+    public void informeGeneral(){
+        
+    }
 }

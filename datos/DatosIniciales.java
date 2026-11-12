@@ -6,7 +6,7 @@ public final class DatosIniciales {
     /** Datos deterministas; -1 representa muro. */
         public static Ciudad crearCiudad(){
              final int FILAS = 30;
-        final int COLUMNAS = 50;
+            final int COLUMNAS = 50;
 
         Ciudad ciudad = new Ciudad(FILAS, COLUMNAS);
 
