@@ -164,7 +164,7 @@ public class Ciudad {
         return columnaMaxTesoros;
     }
     
-
+//PREGUNTAR ACERCA DE ESTOS METODOS.
     public void  mostrarMapa(){
         //Imprime por pantalla la matriz de la ciudad
         //Ver que métodos ya existentes pueden utilizar y completar lo que falte.
