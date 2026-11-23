@@ -17,7 +17,7 @@ public class Sector {
         return this.valor;
     }
 
-    private String getEmoji(){
+    public String getEmoji(){
         //Devuelve un simbolo para cada sector. Ver donde lo pueden utilizar
         String simbolo = 
                  (this.getTipo() == 0) ? "🚩" :

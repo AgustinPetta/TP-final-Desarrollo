@@ -169,7 +169,15 @@ public class Ciudad {
         //Imprime por pantalla la matriz de la ciudad
         //Ver que métodos ya existentes pueden utilizar y completar lo que falte.
         //Por si lo necesitan: un emoji para los muros: "⬛" 
-
+        for (int i=0;i<this.sectores.length;i++){
+            for (int j=0;j<this.sectores[i].length;j++){
+                if(this.sectores[i][j] == null ){
+                    System.out.print("⬛");
+                }else{
+                    System.out.print(this.sectores[i][j].getEmoji());
+                }
+            }
+        }
     }
 
     public Ciudad clonar(){
