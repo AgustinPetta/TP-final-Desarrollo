@@ -5,8 +5,10 @@ public class Ciudad {
     private int columnas;
     public Ciudad(int filas,int columnas){
         if(filas<=0||columnas<=0)throw new IllegalArgumentException("Dimensiones inválidas");
+        this.filas= filas;
+        this.columnas = columnas;
         Sector[][] sectores;
-        sectores = new Sector[filas][columnas];
+        this.sectores = new Sector[filas][columnas];
         //TO DO: Crear la matriz de sectores y poblarla con los sectores
         //sectores=new Sector[filas][columnas];
     }
@@ -182,9 +184,20 @@ public class Ciudad {
 
     public Ciudad clonar(){
         //Retorna una ciudad que es una copia de la ciudad actual.
+        Ciudad ciudadClon = new Ciudad(this.filas,this.columnas);
+        for(int i=0;i<this.sectores.length;i++){
+            for(int j=0;j<this.sectores[i].length;j++){
+                ciudadClon.sectores[i][j] = this.sectores[i][j];
+            }
+        }
+        return ciudadClon;
     }
 
     public void informeGeneral(){
-        
+        System.out.println("Cantidad de tesoros: "+this.contarTesoros());
+        System.out.println("Cantidad de trampas: "+this.contarTrampas());
+        System.out.println("Cantidad de lugares transitables: "+this.contarTransitables());
+        System.out.println("Fila con más tesoros: "+this.filaConMasTesoros());
+        System.out.println("Columna con más tesoros: "+this.columnaConMasTesoros());
     }
 }
