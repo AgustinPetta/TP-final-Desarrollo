@@ -185,9 +185,9 @@ public class Ciudad {
         for (int i=0;i<this.sectores.length;i++){
             for (int j=0;j<this.sectores[i].length;j++){
                 if(this.sectores[i][j] == null ){
-                    System.out.print("⬛");
+                    System.out.print(" "+"\u2B1B" + " ");
                 }else{
-                    System.out.print(this.sectores[i][j].getEmoji());
+                    System.out.print(" " + this.sectores[i][j].getEmoji() + "");
                 }
             }
             System.out.println();

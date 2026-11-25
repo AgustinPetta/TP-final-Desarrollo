@@ -7,13 +7,19 @@ import java.util.Random;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
+    try {
+        System.setOut(new java.io.PrintStream(System.out, true, "UTF-8"));
+    } catch (java.io.UnsupportedEncodingException e) {
+        e.printStackTrace();
+    }
+    
         Ciudad ciudad=crearCiudad();
         Explorador[] exploradores=crearExploradores();
         Scanner teclado=new Scanner(System.in);
         int opcion=-1;
         do{
             System.out.println("\n1. Mostrar Mapa  2. Informe  3. Explorar  4. Ordenar  0. Salir");
-            System.out.print("Opción: ");
+            System.out.print("Opcion: ");
             if(!teclado.hasNextInt()){teclado.nextLine();continue;}
             opcion=teclado.nextInt();
             switch(opcion){

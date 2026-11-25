@@ -7,9 +7,7 @@ public final class DatosIniciales {
     public static Ciudad crearCiudad(){
         final int FILAS = 30;
         final int COLUMNAS = 50;
-
         Ciudad ciudad = new Ciudad(FILAS, COLUMNAS);
-
         for (int f = 0; f < FILAS; f++) {
             for (int c = 0; c < COLUMNAS; c++) {
                 int tipo;
