@@ -35,4 +35,7 @@ public class Sector {
                     (this.getTipo()==3)? true : false;
         return verifTrampa;
     }
+    public void setTipo(int tipo){
+        this.tipo = tipo;
+    }
 }

@@ -33,10 +33,21 @@ public class Ciudad {
         return sectores[fila][columna];
     }
 
-    public void modificar(int fila,int columna,Sector sector){
+    public void modificar(int fila,int columna,Sector sector){//int tipo
         // TO DO: validar posición y asignar nuevo tipo.
         // Recordar que null representa muro.
-        
+        //opcion 1:
+        if(posicionValida(fila,columna)){
+            sectores[fila][columna] = sector;
+        }else{
+            throw new IndexOutOfBoundsException();
+        }
+        //opcion 2: 
+        /* if(posicionValida(fila,columna)){
+            this.sectores[fila][columna].setTipo(tipo);
+        }else{
+            throw new IndexOutOfBoundsException();
+        } */
     }
     public boolean esTransitable(int fila,int columna){
         boolean transitable = true;
