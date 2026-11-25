@@ -190,6 +190,7 @@ public class Ciudad {
                     System.out.print(this.sectores[i][j].getEmoji());
                 }
             }
+            System.out.println();
         }
     }
 
