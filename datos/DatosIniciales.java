@@ -73,7 +73,9 @@ public final class DatosIniciales {
     public static Expedicion[] crearExpediciones(int cantidad,long semilla){
         if(cantidad<0)throw new IllegalArgumentException();
         Random r=new Random(semilla);Expedicion[] datos=new Expedicion[cantidad];
-        for(int i=0;i<cantidad;i++)datos[i]=new Expedicion(i+1,1,r.nextInt(50),r.nextInt(200)+1,r.nextInt(500)-100,r.nextInt(1000000)+1);
+        for(int i=0;i<cantidad;i++){
+            datos[i]=new Expedicion(i+1,1,r.nextInt(50),r.nextInt(200)+1,r.nextInt(500)-100,r.nextInt(1000000)+1);
+        }
         return datos;
     }
 }

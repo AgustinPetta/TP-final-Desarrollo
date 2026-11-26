@@ -13,14 +13,8 @@ public final class Ordenamientos {
         //throw new UnsupportedOperationException("TODO comparar");
     // }
     /** Ordenar in-place; elegir un algoritmo de fuerza bruta. */
-    public static void ordenarFuerzaBruta(Expedicion[] datos){
-        Scanner teclado=new Scanner(System.in);
-        int criterio = -1;
-        do{  
-            System.out.println("\n1. PUNTAJE  2. TESOROS  3. TIEMPO  4. CELDAS  0. Salir");
-            System.out.println("Seleccione el criterio: ");
-            if(!teclado.hasNextInt()){teclado.nextLine();continue;}
-            criterio=teclado.nextInt();
+    public static void ordenarFuerzaBruta(Expedicion[] datos, int criterio){
+        
         switch(criterio){
             case 1: 
                 for(int i=0; i<datos.length; i++){
@@ -68,12 +62,13 @@ public final class Ordenamientos {
             break;
             default : System.out.println("Criterio invalido"); 
         }
-       }while(criterio != 0);    
+           
     }
     /** Ordenar in-place; elegir Heap Sort, Quick Sort o Merge Sort. */
     public static void ordenarDivideVenceras(Expedicion[] datos,int criterio){
         int inicio = 0;
         int fin = datos.length-1;
+        quickSort(datos, inicio, fin, criterio);
     
     }
 

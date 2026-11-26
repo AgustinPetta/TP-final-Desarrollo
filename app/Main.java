@@ -48,7 +48,6 @@ public class Main {
                     Expedicion[] copia = arrExpediciones.clone();
                     System.out.println("Elija el tipo de ordenamiento a usar: ");
                     int tipoAlg = sc.nextInt();
-
                     if (tipoAlg == 1) {
                         Ordenamientos.ordenarFuerzaBruta(copia, criterio);
                     } else if (tipoAlg == 2) {
