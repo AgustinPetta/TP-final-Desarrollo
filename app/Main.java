@@ -17,13 +17,14 @@ public class Main {
     
         Ciudad ciudad=crearCiudad();
         Explorador[] exploradores=crearExploradores();
-        Scanner teclado=new Scanner(System.in);
+        Expedicion[] arrExpediciones = DatosIniciales.crearExpediciones(30, 50);
+        Scanner sc=new Scanner(System.in);
         int opcion=-1;
         do{
             System.out.println("\n1. Mostrar Mapa  2. Informe  3. Explorar  4. Ordenar  0. Salir");
             System.out.print("Opcion: ");
-            if(!teclado.hasNextInt()){teclado.nextLine();continue;}
-            opcion=teclado.nextInt();
+            if(!sc.hasNextInt()){sc.nextLine();continue;}
+            opcion=sc.nextInt();
             switch(opcion){
                 case 1 :
                      ciudad.mostrarMapa();
@@ -36,11 +37,31 @@ public class Main {
                     System.out.println("Tesoros encontrados: " + explorar(ciudad,exploradores[0],1).getTesorosRecuperados());
                     break;
                 case 4 : 
-                    //COMPLETAR
+                    System.out.println("Criterio de ordenamiento");
+                    System.out.println("\n1. PUNTAJE  2. TESOROS  3. TIEMPO  4. CELDAS VISITADAS  0. SALIR ");
+                    System.out.print("Elija criterio: ");
+                    int criterio = sc.nextInt();
+                    if (criterio < 1 || criterio > 4) {
+                        System.out.println("Criterio inválido.");
+                        break;
+                    }
+                    Expedicion[] copia = arrExpediciones.clone();
+                    System.out.println("Elija el tipo de ordenamiento a usar: ");
+                    int tipoAlg = sc.nextInt();
+
+                    if (tipoAlg == 1) {
+                        Ordenamientos.ordenarFuerzaBruta(copia, criterio);
+                    } else if (tipoAlg == 2) {
+                        Ordenamientos.ordenarDivideVenceras(copia, criterio);
+                    } else {
+                        System.out.println("Método inválido.");
+                        break;
+                    }
+                    System.out.println("EXPEDICIONES ORDENADAS" );
+                    for (int i = 0; i < copia.length; i++) {
+                        System.out.println(copia[i]);
+                    }
                     break;
-                
-                case 0 : System.out.println("Fin");
-                break;
                 default: System.out.println("Opción inválida");
             }
         }while(opcion!=0);
@@ -85,9 +106,7 @@ public static Explorador[] crearExploradores()
         long tiempo = fin-inicio;
         expedicionMedida = new Expedicion(idExpedicion, explorador.getId(), tesoros, contadorVisitadas[0], explorador.getPuntaje(), tiempo);
         return expedicionMedida;
-        
-        
-        
+           
 }
 /** El auxiliar debe incluir casos base y cuatro llamadas recursivas. */
 private static int explorarDesde(Ciudad ciudad,Explorador explorador,boolean[][] visitadas,int fila,int columna,int[] contadorVisitadas){
@@ -115,16 +134,16 @@ private static int explorarDesde(Ciudad ciudad,Explorador explorador,boolean[][]
         // luego se verifica mediante los modulos de direccion en que camino puede moverse el explorador, siguiendo el orden de: 
         // abajo-> derecha-> arriba -> izquierda
         // si puede moverse en esa direccion, se hace la llamada recursiva a explorarDesde con la nueva posicion del explorador y se suma a la cantidad de tesoros encontrados.
-        if (Abajo(ciudad, explorador, visitadas, fila, columna, contadorVisitadas)) {
+        if (Abajo(ciudad, fila, columna)) {
             tesorosAlcanzables += explorarDesde(ciudad, explorador, visitadas, fila+1, columna, contadorVisitadas);
         }
-        if(Derecha(ciudad, explorador, visitadas, fila, columna, contadorVisitadas)){
+        if(Derecha(ciudad, fila, columna)){
             tesorosAlcanzables += explorarDesde(ciudad, explorador, visitadas, fila, columna+1, contadorVisitadas);
         }
-        if(Arriba(ciudad, explorador, visitadas, fila, columna, contadorVisitadas)){
+        if(Arriba(ciudad, fila, columna)){
             tesorosAlcanzables += explorarDesde(ciudad, explorador, visitadas, fila-1, columna, contadorVisitadas);
         }
-        if (Izquierda(ciudad, explorador, visitadas, fila, columna, contadorVisitadas)){
+        if (Izquierda(ciudad, fila, columna)){
             tesorosAlcanzables += explorarDesde(ciudad, explorador, visitadas, fila, columna-1, contadorVisitadas);
         }
 
@@ -133,7 +152,7 @@ private static int explorarDesde(Ciudad ciudad,Explorador explorador,boolean[][]
    
 }
 //verifica si la casilla de x direccion a la del explorador es transitable y devuelve un true si es el caso o un false si no.
-public static boolean Abajo(Ciudad ciudad, Explorador explorador, boolean[][] visitadas, int fila, int columna, int[] contadorVisitadas){
+public static boolean Abajo(Ciudad ciudad, int fila, int columna){
     
     boolean movimiento = false;
     if(ciudad.esTransitable(fila+1, columna)){
@@ -141,19 +160,19 @@ public static boolean Abajo(Ciudad ciudad, Explorador explorador, boolean[][] vi
     }
     return movimiento;
 }
-public static boolean Arriba(Ciudad ciudad, Explorador explorador, boolean[][] visitadas, int fila, int columna, int[] contadorVisitadas){
+public static boolean Arriba(Ciudad ciudad, int fila, int columna){
     boolean movimiento = false;
     if(ciudad.esTransitable(fila-1, columna)){
         movimiento=true;
     }
     return movimiento;
-}public static boolean Izquierda(Ciudad ciudad, Explorador explorador, boolean[][] visitadas, int fila, int columna, int[] contadorVisitadas){
+}public static boolean Izquierda(Ciudad ciudad, int fila, int columna){
     boolean movimiento = false;
     if(ciudad.esTransitable(fila, columna-1)){
         movimiento=true;
     }
     return movimiento;
-}public static boolean Derecha(Ciudad ciudad, Explorador explorador, boolean[][] visitadas, int fila, int columna, int[] contadorVisitadas){
+}public static boolean Derecha(Ciudad ciudad, int fila, int columna){
     boolean movimiento = false;
     if(ciudad.esTransitable(fila, columna+1)){
         movimiento=true;
