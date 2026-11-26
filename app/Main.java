@@ -7,7 +7,9 @@ import java.util.Random;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
-    try {
+    
+    //codigo auxiliar para mostrar emojis en la consola 
+        try {
         System.setOut(new java.io.PrintStream(System.out, true, "UTF-8"));
     } catch (java.io.UnsupportedEncodingException e) {
         e.printStackTrace();
@@ -160,6 +162,4 @@ public static boolean Arriba(Ciudad ciudad, Explorador explorador, boolean[][] v
 }
 }
 
-//prueba de commit
-//prueba de sincronizacion re epica papu
 

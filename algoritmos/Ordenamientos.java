@@ -8,14 +8,14 @@ public final class Ordenamientos {
      */
     public static int comparar(Expedicion a,Expedicion b,int criterio){
         // TODO: puntaje y tesoros descendentes; tiempo y celdas ascendentes.
-        throw new UnsupportedOperationException("TODO comparar");
+        //throw new UnsupportedOperationException("TODO comparar");
     }
     /** Ordenar in-place; elegir un algoritmo de fuerza bruta. */
     public static void ordenarFuerzaBruta(Expedicion[] datos,int criterio){
-        throw new UnsupportedOperationException("TODO ordenarFuerzaBruta");
+        //throw new UnsupportedOperationException("TODO ordenarFuerzaBruta");
     }
     /** Ordenar in-place; elegir Heap Sort, Quick Sort o Merge Sort. */
     public static void ordenarDivideVenceras(Expedicion[] datos,int criterio){
-        throw new UnsupportedOperationException("TODO ordenarDivideVenceras");
+        //throw new UnsupportedOperationException("TODO ordenarDivideVenceras");
     }
 }
