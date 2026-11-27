@@ -20,7 +20,7 @@ public final class Ordenamientos {
                 for(int i=0; i<datos.length; i++){
                     Expedicion aux = datos[i];
                     int j = i;
-                    while (j>0 && aux.getPuntaje() > datos[j-1].getPuntaje()){
+                    while (j>0 && (aux.getPuntaje() > datos[j-1].getPuntaje())|| (aux.getPuntaje()== datos[j-1].getPuntaje() && aux.getTiempoNanos() < datos[j-1].getTesorosRecuperados())){
                         datos[j] = datos[j-1];
                         j--;
                     }
@@ -31,7 +31,7 @@ public final class Ordenamientos {
                 for(int i=0; i<datos.length; i++){
                     Expedicion aux = datos[i];
                     int j = i;
-                    while (j>0 && aux.getTesorosRecuperados() > datos[j-1].getTesorosRecuperados()){
+                    while (j>0 && aux.getTesorosRecuperados() > datos[j-1].getTesorosRecuperados() || (aux.getTesorosRecuperados()== datos[j-1].getTesorosRecuperados() && aux.getTiempoNanos() < datos[j-1].getTesorosRecuperados())){
                         datos[j] = datos[j-1];
                         j--;
                     }
@@ -42,7 +42,7 @@ public final class Ordenamientos {
                 for(int i=0; i<datos.length; i++){
                     Expedicion aux = datos[i];
                     int j = i;
-                    while (j>0 && aux.getTiempoNanos() < datos[j-1].getTiempoNanos()){
+                    while (j>0 && aux.getTiempoNanos() < datos[j-1].getTiempoNanos()|| (aux.getTiempoNanos()== datos[j-1].getTiempoNanos() && aux.getPuntaje() < datos[j-1].getPuntaje())){
                         datos[j] = datos[j-1];
                         j--;
                     }
@@ -53,7 +53,7 @@ public final class Ordenamientos {
             for(int i=0; i<datos.length; i++){
                 Expedicion aux = datos[i];
                 int j = i;
-                while (j>0 && aux.getCeldasVisitadas() < datos[j-1].getCeldasVisitadas()){
+                while (j>0 && aux.getCeldasVisitadas() < datos[j-1].getCeldasVisitadas()|| (aux.getCeldasVisitadas()== datos[j-1].getCeldasVisitadas() && aux.getTiempoNanos() < datos[j-1].getTesorosRecuperados())){
                     datos[j] = datos[j-1];
                     j--;
                 }
@@ -88,16 +88,16 @@ public final class Ordenamientos {
             boolean cumple = false;
             switch (criterio){
                 case 1: 
-                    cumple = datos[j].getPuntaje() > pivote.getPuntaje();
+                    cumple = datos[j].getPuntaje() > pivote.getPuntaje() || (datos[j].getPuntaje() == pivote.getPuntaje() && datos[j].getTiempoNanos() < pivote.getTiempoNanos());
                 break;
                 case 2:
-                    cumple = datos[j].getTesorosRecuperados() > pivote.getTesorosRecuperados();
+                    cumple = datos[j].getTesorosRecuperados() > pivote.getTesorosRecuperados()|| (datos[j].getTesorosRecuperados() == pivote.getTesorosRecuperados() && datos[j].getTiempoNanos() < pivote.getTiempoNanos());
                 break;
                 case 3: 
-                    cumple = datos[j].getTiempoNanos() < pivote.getTiempoNanos();
+                    cumple = datos[j].getTiempoNanos() < pivote.getTiempoNanos()|| (datos[j].getTiempoNanos() == pivote.getTiempoNanos() && datos[j].getPuntaje() > pivote.getPuntaje());
                 break;
                 case 4: 
-                    cumple = datos[j].getCeldasVisitadas() < pivote.getCeldasVisitadas();
+                    cumple = datos[j].getCeldasVisitadas() < pivote.getCeldasVisitadas()|| (datos[j].getCeldasVisitadas() == pivote.getCeldasVisitadas() && datos[j].getTiempoNanos()< pivote.getTiempoNanos());
                 break;
             }
             if(cumple){
